@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CopySpark</title>
+</head>
+<body>
+  <h1>CopySpark</h1>
+  <p>Create compelling marketing copy with AI.</p>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  {% if current_user.is_authenticated %}
+    <p>Welcome, {{ current_user.email }}!</p>
+    <p><a href="{{ url_for('dashboard') }}">Go to Dashboard</a></p>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+  {% else %}
+    <p><a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('register') }}">Register</a></p>
+  {% endif %}
+</body>
+</html>
